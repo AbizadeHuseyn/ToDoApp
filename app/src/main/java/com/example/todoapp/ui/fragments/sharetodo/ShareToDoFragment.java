@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,10 +31,10 @@ public class ShareToDoFragment extends Fragment {
     private NavController navController;
 
 
-    @BindView(R.id.edit_text_title)
-    TextInputLayout editTextTitle;
-    @BindView(R.id.edit_text_body)
-    TextInputLayout editTextBody;
+    @BindView(R.id.text_input_layout_title)
+    TextInputLayout textInputLayoutTitle;
+    @BindView(R.id.text_input_layout_body)
+    TextInputLayout textInputLayoutBody;
 
 
     @Nullable
@@ -77,27 +76,26 @@ public class ShareToDoFragment extends Fragment {
 
             });
 
-        }else{
+        } else {
             Toast.makeText(getContext(), "Title or body is empty!", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-
-    private ToDoPOJO creatingToDo(){
+    private ToDoPOJO creatingToDo() {
         String uuid = java.util.UUID.randomUUID().toString();
-        String title = Objects.requireNonNull(editTextTitle.getEditText()).getText().toString();
-        String content = Objects.requireNonNull(editTextBody.getEditText()).getText().toString();
+        String title = Objects.requireNonNull(textInputLayoutTitle.getEditText()).getText().toString();
+        String content = Objects.requireNonNull(textInputLayoutBody.getEditText()).getText().toString();
 
         ToDoPOJO newToDo = new ToDoPOJO(uuid, title, content);
         return newToDo;
     }
 
     private boolean areInputsValid() {
-        return !Objects.requireNonNull(editTextTitle.getEditText()).getText().toString().isEmpty()
-                && !editTextBody.getEditText().getText().toString().isEmpty();
+        return  !Objects.requireNonNull(textInputLayoutTitle.getEditText()).getText().toString().isEmpty()
+                &&
+                !Objects.requireNonNull(textInputLayoutBody.getEditText()).getText().toString().isEmpty();
     }
-
 
 
 }

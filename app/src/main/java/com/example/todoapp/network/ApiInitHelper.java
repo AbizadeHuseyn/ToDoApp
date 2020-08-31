@@ -3,10 +3,9 @@ package com.example.todoapp.network;
 import com.example.todoapp.network.service.ToDoService;
 import com.example.todoapp.utils.Constants;
 import com.squareup.moshi.Moshi;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
-
-import static com.example.todoapp.utils.Constants.BASE_URL;
 
 public class ApiInitHelper {
 

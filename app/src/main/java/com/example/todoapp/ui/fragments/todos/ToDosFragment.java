@@ -76,7 +76,6 @@ public class ToDosFragment extends Fragment {
     }
 
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -89,7 +88,7 @@ public class ToDosFragment extends Fragment {
         toDoRepository.getListOfToDos().deleteObservers();
     }
 
-    private void configureCallBack(){
+    private void configureCallBack() {
         callBack = new GetResponseCallBack() {
             @Override
             public void handleTheResponseOfFailedGet() {
@@ -106,27 +105,23 @@ public class ToDosFragment extends Fragment {
         };
     }
 
-    private void fetchToDos(GetResponseCallBack callBack){
+    private void fetchToDos(GetResponseCallBack callBack) {
         toDoRepository.getAllToDos(callBack);
     }
 
-    private void configureRecyclerView(){
+    private void configureRecyclerView() {
         toDoListAdapter = new ToDoListAdapter(new ToDosCallBack());
         recyclerViewToDos.setAdapter(toDoListAdapter);
     }
 
-    private void setObserves(){
-        toDoRepository.getListOfToDos().addObserver(new Observer() {
-            @Override
-            public void update(Observable observable, Object o) {
-                toDoListAdapter.submitList((List<ToDo>) o);
-            }
-        });
+    private void setObserves() {
+        toDoRepository.getListOfToDos().addObserver((observable, o) ->
+                toDoListAdapter.submitList((List<ToDo>) o));
     }
 
     @OnClick(R.id.fab_share)
-    void onFABClick(){
-    navController.navigate(ToDosFragmentDirections.actionToDosFragmentToShareToDoFragment());
+    void onFABClick() {
+        navController.navigate(ToDosFragmentDirections.actionToDosFragmentToShareToDoFragment());
     }
 
     @OnClick(R.id.button_try_again)

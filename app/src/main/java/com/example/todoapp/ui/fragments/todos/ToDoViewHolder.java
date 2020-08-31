@@ -1,7 +1,6 @@
 package com.example.todoapp.ui.fragments.todos;
 
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;

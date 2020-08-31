@@ -18,23 +18,23 @@ public class ToDoRepository {
 
     private ToDoService toDoService;
 
-    private Observable<List<ToDo>> listOfToDos = new Observable<>() ;
+    private Observable<List<ToDo>> listOfToDos = new Observable<>();
 
-    public ToDoRepository(ToDoService toDoService){
+    public ToDoRepository(ToDoService toDoService) {
         this.toDoService = toDoService;
 
     }
 
-    public Observable<List<ToDo>> getListOfToDos(){
-        return  listOfToDos;
+    public Observable<List<ToDo>> getListOfToDos() {
+        return listOfToDos;
     }
 
     public void getAllToDos(GetResponseCallBack callBack) {
         getAllToDosFromNetwork(callBack);
     }
 
-    public void addToDo(ToDoPOJO toDoPOJO, PostResponseCallBack callBack){
-        addToDoToTheNetwork(toDoPOJO,callBack);
+    public void addToDo(ToDoPOJO toDoPOJO, PostResponseCallBack callBack) {
+        addToDoToTheNetwork(toDoPOJO, callBack);
     }
 
     private void getAllToDosFromNetwork(GetResponseCallBack callBack) {
@@ -62,7 +62,7 @@ public class ToDoRepository {
 
     }
 
-    private void addToDoToTheNetwork(ToDoPOJO toDoPOJO, PostResponseCallBack callBack){
+    private void addToDoToTheNetwork(ToDoPOJO toDoPOJO, PostResponseCallBack callBack) {
 
         Call<ToDo> call = toDoService.addToDo(toDoPOJO);
         call.enqueue(new Callback<ToDo>() {
@@ -77,8 +77,6 @@ public class ToDoRepository {
             }
         });
     }
-
-
 
 
 }
